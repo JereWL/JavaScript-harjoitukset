@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+ <meta charset='UTF-8'>
+ <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+ <title>tehtävä 7</title>
+</head>
+<body>
+ <h1>Dice roller</h1>
+    <p id='result'></p>
+    <script>
+        const diceamount = parseInt(prompt('How many dice do you want to roll?'));
+        const dicesides = parseInt(prompt('How many sides do the dice have?'));
+        let sum = 0;
+
+        for (let i = 0; i < diceamount; i++) {
+            const roll = Math.floor(Math.random() * dicesides) + 1;
+            sum += roll;
+        }
+        document.querySelector('#result').textContent = 'Sum of all rolled dice: ' + sum;
+    </script>
+
+</body>
+</html>
