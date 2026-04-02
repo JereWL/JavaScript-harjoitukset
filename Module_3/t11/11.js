@@ -92,28 +92,40 @@ const picArray = [
   },
 ];
 
-const pictureSection = document.getElementById("pictures");
-pictureSection.innerHTML = "";
+const pictureSection = document.getElementById('pictures');
+const popup = document.querySelector('dialog');
+const popupImage = popup.querySelector('img');
+const closeButton = popup.querySelector('span');
+
+pictureSection.replaceChildren();
 
 for (let i = 0; i < picArray.length; i++) {
   const picture = picArray[i];
 
-  const article = document.createElement("article");
+  const article = document.createElement('article');
   article.classList.add('card');
+  article.addEventListener('click', () => {
+    popupImage.src = picture.image.large;
+    popupImage.alt = picture.title;
+    popup.showModal();
+    closeButton.addEventListener('click', () => {
+    popup.close();
+  });
+  });
 
-  const heading = document.createElement("h2");
+  const heading = document.createElement('h2');
   heading.textContent = picture.title;
 
-  const figure = document.createElement("figure");
+  const figure = document.createElement('figure');
   
-  const img = document.createElement("img");
+  const img = document.createElement('img');
   img.src = picture.image.medium;
   img.alt = picture.title;
 
-  const figcaption = document.createElement("figcaption");
+  const figcaption = document.createElement('figcaption');
   figcaption.textContent = picture.caption;
 
-  const description = document.createElement("p");
+  const description = document.createElement('p');
   description.textContent = picture.description;
 
   figure.appendChild(img);
